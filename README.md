@@ -1,5 +1,7 @@
 # MeowCounter - A Fun and Interactive Calculator
 
+![MeowCounter Calculator](meowcunter.png)
+
 Welcome to MeowCounter, a delightful and user-friendly calculator app designed to make your calculations not only easy but also enjoyable. Whether you're crunching numbers for work, school, or just for fun, MeowCounter is here to help you with its intuitive interface and charming design.
 
 ## Features
