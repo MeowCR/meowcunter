@@ -1,6 +1,6 @@
 #calculatrice {
     width: 255px; /* Définir la largeur de la calculatrice */
-    padding: 10px;
+    padding : 40px 15px;
     border: 1px solid #000; /* Ajouter une bordure à la calculatrice pour la visibilité */
     text-align: center;
     margin: auto; /* Centrer la calculatrice */
@@ -8,12 +8,13 @@
 }
 
 #ecran {
-    width: calc(100% - 20px); /* Prendre toute la largeur moins le padding */
+    width: calc(100% - 20px); /* Conserve la largeur actuelle */
+    height: 60px; /* Exemple de nouvelle hauteur spécifiée */
     padding: 10px;
-    margin-bottom: 20px; /* Espace entre l'écran et les boutons */
-    background-color: #f0f0f0; /* Couleur de fond pour distinguer l'écran */
-    word-wrap: break-word; /* Permettre à l'écran de passer à la ligne si nécessaire */
-    border: 1px solid #ddd; /* Une bordure légère pour l'écran */
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    word-wrap: break-word;
+    border: 1px solid #ddd;
     text-align: right;
 }
 
@@ -37,4 +38,8 @@ button {
 
 .egual {
   background-color: #FAD713;
+}
+
+#result {
+  font-size: 20px;
 }

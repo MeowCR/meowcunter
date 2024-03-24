@@ -19,7 +19,7 @@ function calculate() {
     try {
         const resultat = eval(operationEnCours);
         // Utiliser innerHTML pour inclure un saut de ligne <br> entre l'opération et le résultat
-        document.getElementById("ecran").innerHTML = operationEnCours + "<br>" + resultat;
+        document.getElementById("ecran").innerHTML = operationEnCours + "<br><span id = 'result'>" + resultat + "</span>";
         operationEnCours = ''; // Optionnel : Réinitialiser l'opération en cours
         nouvelleOperation = true; // Préparer pour une nouvelle opération après l'affichage du résultat
     } catch (e) {
