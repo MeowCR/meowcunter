@@ -52,8 +52,8 @@ function remove() {
 
 // Gestionnaire d'événements pour les touches du clavier
 document.addEventListener('keydown', (event) => {
-    const key = event.key; // La touche pressée
-    const ignoredKeys = ['Shift', 'CapsLock', 'Control', 'Alt', 'Tab', 'Meta']; // Liste des touches à ignorer
+    const key = event.key;
+    const ignoredKeys = ['Shift', 'CapsLock', 'Control', 'Alt', 'Tab', 'Meta'];
 
     if (ignoredKeys.includes(key)) {
         return; // Ignore les touches spécifiées
@@ -61,29 +61,30 @@ document.addEventListener('keydown', (event) => {
 
     event.preventDefault(); // Empêche le comportement par défaut pour toutes les touches gérées
 
-    // Cartographie des touches du clavier aux actions de la calculatrice
+    // Cartographie des touches du clavier aux actions de la calculatrice et à leur effet visuel
     const keyMap = {
         '0': 'zero', '1': 'one', '2': 'two', '3': 'three',
         '4': 'four', '5': 'five', '6': 'six', '7': 'seven',
         '8': 'eight', '9': 'nine', '+': 'plus', '-': 'minus',
-        '*': 'multiply', '/': 'divide', '=': 'equals', '.': 'dot'
+        '*': 'multiply', '/': 'divide', 'Enter': 'equals', 'Backspace': 'back', ' ': 'reset',
+        '=': 'equals', '.': 'dot'
     };
 
-    // Gère spécifiquement les touches "Enter", "Backspace" et "Espace"
+    // Exécution des actions spécifiques
     if (key === 'Enter') {
         calculate();
     } else if (key === 'Backspace') {
         remove();
     } else if (key === ' ') {
         reset();
-    } else {
-        // Pour les chiffres et les opérateurs, trouve le bouton correspondant et simule un clic
-        const actionKey = keyMap[key] || key; // Utilise la touche directement si elle n'est pas dans keyMap
-        const button = document.querySelector(`button[data-key="${actionKey}"]`);
-        if (button) {
-            button.click(); // Simule un clic sur le bouton correspondant
-            button.classList.add('button-pressed'); // Ajoute visuellement l'effet "pressed"
-            setTimeout(() => button.classList.remove('button-pressed'), 150); // Enlève l'effet "pressed" après un court délai
-        }
+    }
+
+    // Applique l'effet "pressed" pour toutes les touches, y compris "Enter", "Backspace" et "Espace"
+    const actionKey = keyMap[key];
+    const button = document.querySelector(`button[data-key="${actionKey}"]`);
+    if (button) {
+        button.click(); // Simule un clic sur le bouton correspondant
+        button.classList.add('button-pressed');
+        setTimeout(() => button.classList.remove('button-pressed'), 150);
     }
 });
