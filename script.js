@@ -18,14 +18,25 @@ function calculate() {
     }
     try {
         const resultat = eval(operationEnCours);
-        document.getElementById("ecran").textContent = `${operationEnCours} = ${resultat}`;
-        operationEnCours = ''; // Réinitialiser l'opération en cours pour commencer une nouvelle opération
-        nouvelleOperation = true;
+        // Utiliser innerHTML pour inclure un saut de ligne <br> entre l'opération et le résultat
+        document.getElementById("ecran").innerHTML = operationEnCours + "<br>" + resultat;
+        operationEnCours = ''; // Optionnel : Réinitialiser l'opération en cours
+        nouvelleOperation = true; // Préparer pour une nouvelle opération après l'affichage du résultat
     } catch (e) {
         document.getElementById("ecran").textContent = "Erreur";
         operationEnCours = '';
-        nouvelleOperation = true; // Préparer pour une nouvelle opération après une erreur
+        nouvelleOperation = true;
     }
+}
+
+function press(symbole) {
+    if (nouvelleOperation) {
+        document.getElementById("ecran").textContent = ''; // Réinitialiser complètement l'écran pour une nouvelle opération
+        operationEnCours = ''; // Assurez-vous que l'opération en cours est également réinitialisée
+        nouvelleOperation = false;
+    }
+    operationEnCours += symbole;
+    document.getElementById("ecran").textContent = operationEnCours;
 }
 
 function reset() {
