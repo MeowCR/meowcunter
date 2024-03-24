@@ -1,64 +1,60 @@
 body {
-    background-color: #2F3740;
+    background-color: #f0e8f6; /* Un fond subtil entre rose et violet */
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    min-height: 100vh; /* S'assurer que le body prend au moins la hauteur de la fenêtre */
-    margin: 0; /* Supprimer les marges par défaut du body */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 #calculatrice {
-    width: 255px; /* Définir la largeur de la calculatrice */
-    padding : 40px 15px;
-    border: 1px solid #000; /* Ajouter une bordure à la calculatrice pour la visibilité */
-    text-align: center;
-    margin: auto; /* Centrer la calculatrice */
-    background-image: url("cat_pattern.svg");
-    background-size: cover; /* Ou 'contain' pour s'assurer que l'image est entièrement visible */
-    border-radius: 10px;
-    border: none;
-}
-
-#ecran {
-    width: calc(100% - 20px); /* Conserve la largeur actuelle */
-    height: 60px; /* Exemple de nouvelle hauteur spécifiée */
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    word-wrap: break-word;
-    border: none;
-    border-radius: 10px;
-    text-align: right;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #f0e8f6; /* Assorti au fond du body pour une intégration douce */
 }
 
 button {
-    width: 50px; /* Largeur des boutons */
-    height: 50px; /* Hauteur des boutons */
-    margin: 5px; /* Espacement entre les boutons */
-    cursor: pointer; /* Changer le curseur en pointer , il faudra le modifier par un chat*/
-    color: #2F3740;
-    border-radius: 25px;
     border: none;
+    outline: none;
+    margin: 10px;
+    padding: 15px 30px;
+    border-radius: 30px; /* Boutons arrondis */
+    background: #e0e5ec;
+    box-shadow: 8px 8px 15px #a3b1c6, /* Ombre externe */
+                -8px -8px 15px #ffffff; /* Lumière externe */
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    user-select: none; /* Empêche la sélection du texte sur les boutons */
 }
 
-.special {
-    background-color: #FCABC8;
+button:active {
+    box-shadow: inset 8px 8px 15px #a3b1c6, /* Ombre interne lors du clic */
+                inset -8px -8px 15px #ffffff; /* Lumière interne lors du clic */
 }
 
-.digit {
-  background-color: #C5F3F2;
+/* Styles supplémentaires pour les boutons spéciaux, égale, etc. */
+.special, .egual {
+    /* Vous pouvez ajuster les styles ici si nécessaire */
 }
 
-.egual {
-  background-color: #FAD713;
-}
-
-#result {
-  font-size: 40px;
+#ecran {
+    width: calc(100% - 40px);
+    margin: 0 auto 20px;
+    padding: 20px;
+    background: #e0e5ec;
+    box-shadow: inset 8px 8px 15px #a3b1c6,
+                inset -8px -8px 15px #ffffff;
+    border-radius: 20px;
+    text-align: right;
+    font-size: 20px;
+    color: #666;
 }
 
 #label {
-  text-align: left;
-  margin: 0;
-  padding: 0;
+    font-size: 24px;
+    color: #a381b1; /* Un violet doux pour le texte */
+    text-shadow: 1px 1px 2px #ffffff, /* Lumière pour effet en relief */
+                 -1px -1px 2px #d8c0e0; /* Ombre douce pour le contraste */
+    padding: 10px 0; /* Ajustez l'espacement au besoin */
 }
