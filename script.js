@@ -1,5 +1,5 @@
-let operationEnCours = ''; // Pour garder la trace de l'opération en cours
-let nouvelleOperation = true; // Pour savoir si on commence une nouvelle opération
+let operationEnCours = '';
+let nouvelleOperation = true;
 
 function press(symbole) {
     if (nouvelleOperation) {
@@ -11,16 +11,18 @@ function press(symbole) {
 }
 
 function calculate() {
+    if (operationEnCours.includes('/0')) {
+        alert("Division par zéro impossible!");
+        reset();
+        return;
+    }
     try {
-        if (operationEnCours.includes('/0')) {
-            throw new Error("Division par zéro impossible");
-        }
         const resultat = eval(operationEnCours);
         document.getElementById("ecran").textContent = `${operationEnCours} = ${resultat}`;
         nouvelleOperation = true;
     } catch (e) {
-        document.getElementById("ecran").textContent = e.message; // Afficher le message d'erreur
-        nouvelleOperation = true; // Réinitialiser pour une nouvelle opération
+        document.getElementById("ecran").textContent = "Erreur";
+        operationEnCours = '';
     }
 }
 
@@ -29,3 +31,14 @@ function reset() {
     document.getElementById("ecran").textContent = '0';
     nouvelleOperation = true;
 }
+
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    if ((key >= 0 && key <= 9) || key === '+' || key === '-' || key === '*' || key === '/' || key === '(' || key === ')') {
+        press(key);
+    } else if (key === 'Enter' || key === '=') {
+        calculate();
+    } else if (key === 'Escape') {
+        reset();
+    }
+});
