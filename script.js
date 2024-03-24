@@ -4,7 +4,7 @@ let nouvelleOperation = true;
 function press(symbole) {
     if (nouvelleOperation) {
         document.getElementById("ecran").textContent = '';
-        operationEnCours = ''; // Assurez-vous que l'opération en cours est également réinitialisée
+        operationEnCours = '';
         nouvelleOperation = false;
     }
     operationEnCours += symbole;
@@ -14,15 +14,15 @@ function press(symbole) {
 function calculate() {
     if (operationEnCours.includes('/0')) {
         document.getElementById("ecran").textContent = "Division par zéro impossible!";
-        operationEnCours = ''; // Réinitialiser l'opération en cours
+        operationEnCours = '';
         nouvelleOperation = true;
         return;
     }
     try {
         const resultat = eval(operationEnCours);
         document.getElementById("ecran").innerHTML = operationEnCours + "<br><span id='result'>" + resultat + "</span>";
-        operationEnCours = resultat.toString(); // Gardez le résultat pour des opérations futures
-        nouvelleOperation = true; // Préparer pour une nouvelle opération après l'affichage du résultat
+        operationEnCours = '';
+        nouvelleOperation = true;
     } catch (e) {
         document.getElementById("ecran").textContent = "Erreur";
         operationEnCours = '';
@@ -47,14 +47,12 @@ document.addEventListener('keydown', (event) => {
     const key = event.key;
     const ignoredKeys = ['Shift', 'CapsLock', 'Control', 'Alt', 'Tab', 'Meta'];
 
-    // Empêcher le comportement par défaut pour certaines touches pour éviter des effets indésirables dans le navigateur
-    if (['Enter', 'Backspace', ' '].includes(key)) {
-        event.preventDefault();
+    if (ignoredKeys.includes(key)) {
+        return;
     }
 
-    // Ignorer les touches spécifiques
-    if (ignoredKeys.includes(key)) {
-        return; // Ne fait rien si la touche pressée est dans la liste des touches ignorées
+    if (['Enter', 'Backspace', ' '].includes(key)) {
+        event.preventDefault();
     }
 
     const keyMap = {
@@ -65,19 +63,26 @@ document.addEventListener('keydown', (event) => {
         '=': 'equals', '.': 'dot'
     };
 
-    // Traitement spécifique pour les touches 'Enter', 'Backspace', et ' '
-    if (key === 'Enter') {
-        calculate();
-    } else if (key === 'Backspace') {
-        remove();
-    } else if (key === ' ') {
-        reset();
-    } else {
-        // Pour les autres touches, trouver le bouton correspondant et simuler un clic
-        const buttonKey = keyMap[key];
-        const button = document.querySelector(`button[data-key="${buttonKey}"]`);
-        if (button) {
-            button.click();
+    const buttonKey = keyMap[key];
+    const button = document.querySelector(`button[data-key="${buttonKey}"]`);
+
+    if (button) {
+        button.classList.add('button-pressed');
+        setTimeout(() => button.classList.remove('button-pressed'), 150);
+
+        switch (key) {
+            case 'Enter':
+                calculate();
+                break;
+            case 'Backspace':
+                remove();
+                break;
+            case ' ':
+                reset();
+                break;
+            default:
+                press(key);
+                break;
         }
     }
 });
