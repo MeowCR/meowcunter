@@ -1,20 +1,40 @@
 #calculatrice {
+    width: 255px; /* Définir la largeur de la calculatrice */
+    padding: 10px;
+    border: 1px solid #000; /* Ajouter une bordure à la calculatrice pour la visibilité */
     text-align: center;
-    margin: auto;
-    width: auto;
-    padding: 20px;
+    margin: auto; /* Centrer la calculatrice */
+    background-color: #2F3740;
 }
 
 #ecran {
-    width: 100%;
+    width: calc(100% - 20px); /* Prendre toute la largeur moins le padding */
     padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f2f2f2;
+    margin-bottom: 20px; /* Espace entre l'écran et les boutons */
+    background-color: #f0f0f0; /* Couleur de fond pour distinguer l'écran */
+    word-wrap: break-word; /* Permettre à l'écran de passer à la ligne si nécessaire */
+    border: 1px solid #ddd; /* Une bordure légère pour l'écran */
     text-align: right;
 }
 
 button {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
+    width: 50px; /* Largeur des boutons */
+    height: 50px; /* Hauteur des boutons */
+    margin: 5px; /* Espacement entre les boutons */
+    cursor: pointer; /* Changer le curseur en pointer , il faudra le modifier par un chat*/
+    color: #2F3740;
+    border-radius: 25px;
+    border: none;
+}
+
+.special {
+    background-color: #FCABC8;
+}
+
+.digit {
+  background-color: #C5F3F2;
+}
+
+.egual {
+  background-color: #FAD713;
 }
