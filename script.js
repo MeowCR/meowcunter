@@ -53,6 +53,7 @@ function remove() {
 // Gestionnaire d'événements pour les touches du clavier
 document.addEventListener('keydown', (event) => {
     const key = event.key;
+    console.log(key)
     const ignoredKeys = ['Shift', 'CapsLock', 'Control', 'Alt', 'Tab', 'Meta'];
 
     if (ignoredKeys.includes(key)) {
@@ -66,7 +67,7 @@ document.addEventListener('keydown', (event) => {
         '0': 'zero', '1': 'one', '2': 'two', '3': 'three',
         '4': 'four', '5': 'five', '6': 'six', '7': 'seven',
         '8': 'eight', '9': 'nine', '+': 'plus', '-': 'minus',
-        '*': 'multiply', '/': 'divide', 'Enter': 'equals', 'Backspace': 'back', ' ': 'reset',
+        '*': 'multiply', '/': 'divide', 'Enter': 'Enter', 'Backspace': 'Backspace', ' ': 'Escape',
         '=': 'equals', '.': 'dot'
     };
 
@@ -74,6 +75,7 @@ document.addEventListener('keydown', (event) => {
     if (key === 'Enter') {
         calculate();
     } else if (key === 'Backspace') {
+        console.log('i remove it');
         remove();
     } else if (key === ' ') {
         reset();
