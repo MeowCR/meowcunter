@@ -1,10 +1,22 @@
+body {
+    background-color: #2F3740;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    min-height: 100vh; /* S'assurer que le body prend au moins la hauteur de la fenêtre */
+    margin: 0; /* Supprimer les marges par défaut du body */
+}
+
 #calculatrice {
     width: 255px; /* Définir la largeur de la calculatrice */
     padding : 40px 15px;
     border: 1px solid #000; /* Ajouter une bordure à la calculatrice pour la visibilité */
     text-align: center;
     margin: auto; /* Centrer la calculatrice */
-    background-color: #2F3740;
+    background-image: url("cat_pattern.svg");
+    background-size: cover; /* Ou 'contain' pour s'assurer que l'image est entièrement visible */
+    border-radius: 10px;
+    border: none;
 }
 
 #ecran {
@@ -14,7 +26,8 @@
     margin-bottom: 20px;
     background-color: #f0f0f0;
     word-wrap: break-word;
-    border: 1px solid #ddd;
+    border: none;
+    border-radius: 10px;
     text-align: right;
 }
 
@@ -41,5 +54,11 @@ button {
 }
 
 #result {
-  font-size: 20px;
+  font-size: 40px;
+}
+
+#label {
+  text-align: left;
+  margin: 0;
+  padding: 0;
 }
