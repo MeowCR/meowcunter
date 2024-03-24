@@ -55,15 +55,29 @@ function remove() {
 
 document.addEventListener('keydown', (event) => {
     const key = event.key;
-    if (key === 'Enter') {
-        event.preventDefault();
-        calculate();
-    } else if ((key >= '0' && key <= '9') || key === '+' || key === '-' || key === '*' || key === '/' || key === '(' || key === ')') {
-        press(key);
-    } else if (key === 'Escape') {
-        reset();
-    } else if (key === 'Backspace') {
-        event.preventDefault(); // Empêcher le comportement par défaut du navigateur
-        remove(); // Appeler la fonction remove() pour supprimer le dernier caractère
+    const keyMap = {
+        '0': 'zero', '1': 'one', '2': 'two', '3': 'three',
+        '4': 'four', '5': 'five', '6': 'six', '7': 'seven',
+        '8': 'eight', '9': 'nine', '+': 'plus', '-': 'minus',
+        '*': 'multiply', '/': 'divide', 'Enter': 'equals', 'Backspace': 'back'
+    };
+
+    // Trouver le bouton correspondant
+    const button = document.querySelector(`button[data-key="${keyMap[key]}"]`);
+    if (button) {
+        button.classList.add('button-pressed');
+        // Supprimer la classe après un court délai pour simuler le relâchement du bouton
+        setTimeout(() => button.classList.remove('button-pressed'), 100);
+
+        // Appeler la fonction correspondante
+        if (key === 'Enter') {
+            event.preventDefault();
+            calculate();
+        } else if (key === 'Backspace') {
+            event.preventDefault();
+            remove();
+        } else {
+            press(key);
+        }
     }
 });

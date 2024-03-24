@@ -33,6 +33,12 @@ button:active {
                 inset -8px -8px 15px #ffffff; /* Lumière interne lors du clic */
 }
 
+.button-pressed {
+    transform: scale(0.95); /* Légèrement plus petit pour simuler l'appui */
+    box-shadow: inset 8px 8px 15px #a3b1c6, /* Ombre interne pour effet enfoncé */
+                inset -8px -8px 15px #ffffff; /* Lumière interne pour effet enfoncé */
+}
+
 /* Styles supplémentaires pour les boutons spéciaux, égale, etc. */
 .special, .egual {
     /* Vous pouvez ajuster les styles ici si nécessaire */
